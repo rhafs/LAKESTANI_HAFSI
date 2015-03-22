@@ -51,7 +51,7 @@ header a {
 color: color:#000090;
 }
 
-#index_content {
+#index_content,#search_content {
 display:block;
 border-top:3px rgb(113,127,133) solid;
 border-bottom:3px rgb(113,127,133) solid;
@@ -60,7 +60,7 @@ padding-top:1%;
 padding-bottom:1%;
 }
 
-#article_comment {
+#article_comment,#search_list {
 text-align: justify;
 width: 50%;
 margin: 0 1.5%;
