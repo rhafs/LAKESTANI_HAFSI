@@ -1,7 +1,9 @@
 body {
 background: url("fondBeige.jpg");
 min-width: 600px;
-max-width: 1000px;
+margin-left:auto;
+margin-right:auto;
+width:80%;
 }
 
 header {
@@ -49,8 +51,8 @@ header a {
 color: color:#000090;
 }
 
-#corps {
-display:inline-block;
+#index_content {
+display:block;
 border-top:3px rgb(113,127,133) solid;
 border-bottom:3px rgb(113,127,133) solid;
 margin-top:1%;
@@ -58,9 +60,9 @@ padding-top:1%;
 padding-bottom:1%;
 }
 
-article {
+#corps {
 text-align: justify;
-width: 70%;
+width: 50%;
 margin: 0 1.5%;
 display: inline-block;
 vertical-align: middle;
@@ -70,7 +72,7 @@ aside {
 width:20%;
 display: inline-block;
 vertical-align: middle;
-margin-left:6.5%;
+margin-left:15%;
 background-color:rgb(218,220,224);
 font-family: Verdana, Geneva, sans-serif;
 }
@@ -78,6 +80,7 @@ font-family: Verdana, Geneva, sans-serif;
 aside h1,aside input,aside form {
 text-align:center;
 }
+
 aside h1 {
 padding-left:5%;
 }
@@ -100,9 +103,27 @@ font-style:italic;
 
 footer img {
 float:right;
-height:50px;
+height:70px;
 }
 
 form {
 margin-bottom:5%;
+}
+
+#corps_commentaire {
+border-radius:0.5em;
+border:2px solid black;
+background-color:rgb(218,220,224);
+margin-left:10%;
+padding-left:10%;
+padding-right:10%;
+}
+
+#corps_commentaire>p:first-child {
+color:blue;
+}
+
+article h1 {
+font-family:'Comic Sans MS', 'Comic Sans', 'Lucida Handwriting', script, cursive;
+font-size:150%;
 }
