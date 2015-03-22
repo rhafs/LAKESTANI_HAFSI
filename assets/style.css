@@ -60,7 +60,7 @@ padding-top:1%;
 padding-bottom:1%;
 }
 
-#corps {
+#article_comment {
 text-align: justify;
 width: 50%;
 margin: 0 1.5%;
@@ -110,7 +110,7 @@ form {
 margin-bottom:5%;
 }
 
-#corps_commentaire {
+#comment_content {
 border-radius:0.5em;
 border:2px solid black;
 background-color:rgb(218,220,224);
@@ -119,11 +119,11 @@ padding-left:10%;
 padding-right:10%;
 }
 
-#corps_commentaire>p:first-child {
+#comment_content>p:first-child {
 color:blue;
 }
 
 article h1 {
-font-family:'Comic Sans MS', 'Comic Sans', 'Lucida Handwriting', script, cursive;
+font-family:'Comic Sans MS', cursive;
 font-size:150%;
 }
