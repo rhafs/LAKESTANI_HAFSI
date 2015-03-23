@@ -166,7 +166,8 @@ article h1 {
 	* { margin: 0; padding: 0; }
 	
 	body {
-		width:100%;
+		/*width:100%;*/
+		min-width : 510px;
 	}
 	header nav/*, #main, aside*/ {
 		float: left;
@@ -190,6 +191,72 @@ article h1 {
 		text-align: center;
 	}			
 }
+
+@media screen and (max-width: 509px) {
+
+	/*#skipTo {
+		display: block;
+	}*/
+	body {
+	text-align : center;
+	min-width : 320px;
+	}
+	/*header nav/*, #main, aside {
+		/*float: left;
+		margin: 0 0 10px; 
+		width: 100%;
+	}	*/
+	header nav ul{
+		right: 0px;
+		position:relative;
+		margin: 0 0 0px; 
+		width: 100%;
+	}*/
+	header nav li {
+		margin: 0;
+		display: block;
+		margin-bottom: 3px;
+	}
+	header nav a {
+		display: block;
+		padding: 10px;
+		text-align: center;
+	}			
+	
+	aside {
+
+display: inline;
+/*vertical-align: middle;*/
+background-color:rgb(218,220,224);
+font-family: Verdana, Geneva, sans-serif;
+min-width : 30%;/*ajouté pour que le input ne dépasse pas du inside*/
+
+}
+/*
+header #bg h1{
+width :90%;
+padding-right:10px;
+
+}*/
+
+
+
+
+#article_comment {
+text-align: justify;
+width: 90%;
+margin: 0 1.5%;
+display: inline-block;
+vertical-align: middle;
+}
+article h1{
+width :95%;
+text-align : center;
+
+}
+}
+
+
 
 
 
