@@ -1,0 +1,23 @@
+aside {
+vertical-align: top;
+}
+
+figure {
+float:right;
+margin-left:1%;
+margin-right:1%;
+text-align:center;
+}
+
+.left_side {
+vertical-align: top;
+}
+
+figure img {
+height:200px;
+width:150px;
+}
+
+.comment_content {
+margin-bottom:5%;
+}

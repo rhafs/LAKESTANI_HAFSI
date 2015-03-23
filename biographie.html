@@ -3,39 +3,63 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/biography_style.css">
     <title>Blog sur Christopher Nolan</title>
   </head>
  <body>
- <header>
-  <img src="assets/NewTux.png" alt="Le Pingouin de Linux" />
-  <h1>Bienvenue sur notre Blog de Christopher Nolan</h1>
-  <nav>
-  <ul>
-   <li><a href="#">Accueil</a></li>
-   <li><a href="#">Ajouter un article</a></li>
-   <li><a href="#">Rechercher un article</a></li>
-   <li><a href="#">A propos</a></li>
-  </ul>
-  </nav>
- </header>
- <section id="corps">
- <article>
-  <h1>Christopher Nolan Test pour git graphique 2</h1>
-  <p>Montius nos tumore inusitato quodam et novo ut rebellis et maiestati 
-  recalcitrantes Augustae per haec quae strepit incusat iratus nimirum quod 
-  contumacem praefectum, quid rerum ordo postulat ignorare dissimulantem 
-  formidine tenus iusserim custodiri.</p>
- </article>
- <aside>
-  <section>
-  <h1>Zone de recherche</h1>
-	<form method="get" action="recherche.html">
-		<input type="search">
-	</form>
- </aside>
- </section>
- <footer>
-	<p>HAFSI Rachida LAKESTANI Diane</p>
- </footer>
+	<header>
+		<h1>Bienvenue sur notre Blog<br> de Christopher Nolan</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="ajout.html">Ajouter un article</a></li>
+				<li><a href="recherche.html">Rechercher un article</a></li>
+				<li><a href="propos.html">A propos</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="content">
+		<section class="left_side">
+			<article>
+				<h1>Biographie de Christopher Nolan</h1>
+				<figure>
+					<img width="256" alt="Christopher Nolan à Santa Barbara International Film Festival" src="assets/Christopher_nolan.jpg"/>
+					<figcaption>La photo est de sbclick <a href="http://creativecommons.org/licenses/by/2.0">[CC by 2.0]</a><a href="http://commons.wikimedia.org/wiki/File%3AChristopher_nolan.jpg"> <br>via Wikimedia Commons.</a></figcaption>
+				</figure>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec aliquam felis. Aliquam ut lacus ipsum. Suspendisse interdum, augue sed mattis mollis, dui erat suscipit massa, sed maximus metus purus at ligula. Suspendisse ornare leo eros. Pellentesque volutpat efficitur nisl vel finibus. Duis efficitur pharetra lacus vitae vestibulum. Quisque feugiat ligula vel ligula venenatis, at tristique neque mollis. Donec vehicula diam fringilla elit commodo, in aliquam augue pellentesque. Sed lorem lacus, placerat in viverra eu, pharetra nec ligula. Phasellus maximus cursus risus id tristique. Quisque viverra feugiat ex, eu mattis diam scelerisque nec.</p>
+
+				<p>Proin lobortis, nisl eu semper porttitor, nisi nisl posuere lorem, non facilisis tortor libero sed leo. Vestibulum ullamcorper sollicitudin ullamcorper. Nulla tempor velit ac massa pretium sollicitudin. Sed fermentum felis sit amet nunc ultrices, vel ullamcorper leo pharetra. Ut cursus felis at bibendum congue. Duis sodales viverra purus, blandit blandit lectus placerat in. Mauris est justo, mattis vel iaculis nec, fringilla nec nunc. Sed ultrices tortor in mauris pulvinar, in luctus ipsum pharetra. Quisque sed lorem ac purus tristique dictum. Nam vehicula ornare nisl, vel eleifend odio condimentum vitae. Proin pretium dolor non sodales euismod. Aliquam erat volutpat.</p>
+
+				<p>Nam bibendum posuere condimentum. Mauris finibus lorem a felis efficitur euismod. Donec ullamcorper euismod euismod. Pellentesque vel mollis ipsum. Aliquam ultricies maximus lectus, a congue risus finibus vitae. Nunc non nulla commodo, fringilla elit quis, facilisis dolor. Nam tincidunt lacinia lectus in rhoncus. Fusce eu gravida nulla, eu faucibus magna. Donec fringilla lacus nec massa ultrices, et rhoncus leo condimentum. Curabitur sodales sem at scelerisque convallis.</p> 
+			</article>
+			<section class="comments">
+				<div class="comment_header">
+					<h1>3 commentaires sur "Biographie de Christopher Nolan"</h1>
+				</div>
+				<div class="comment_content">
+					<p>Armays 20</p> <p>mars 2015 10h21</p>
+					<p>J'espère que ce site vous plaira, merci pour votre attetntion. :)</p>
+				</div>
+				<div class="comment_content">
+					<p>Ephe</p> <p>21 mars 2015 11h53</p>
+					<p>Salut Armays c'est un bon début continue comme ça.</p>
+				</div>
+				<div class="comment_content">
+					<p>Nolan-Addict</p> <p>22 mars 2015 15h23</p>
+					<p>J'adore ce réalisateur, je le suis depuis ses débuts, merci pour ce blog !</p>
+				</div>
+			</section>
+		</section>
+		<aside>
+			<h1>Zone de recherche</h1>
+			<form method="get" action="recherche.html">
+			<input type="search" placeholder="Entrez un mot-clef" name="the_search">
+			</form>
+		</aside>
+	</section>
+	<footer>
+		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
+		<p>HAFSI Rachida LAKESTANI Diane</p>
+	</footer>
  </body>
 </html>
