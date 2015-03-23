@@ -1,6 +1,4 @@
-aside {
-vertical-align: bottom;
-}
+
 
 .left_side h1 {
 text-align:center;
@@ -22,14 +20,10 @@ table td {
 width:50%;
 }
 
-table td::nth-child(1) {
-background-color:rgb(226,228,255);
-}
-
-table td::nth-child(2) {
-background-color:rgb(226,228,255);
-}
-
 table tr:nth-child(2n) {
 background-color:rgb(226,228,255);
+}
+
+.content {
+width:100%;
 }
