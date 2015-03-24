@@ -3,7 +3,7 @@ body {
 	min-width: 801px;
 	margin-left:auto;
 	margin-right:auto;
-	width:100%;
+	width:80%;
 	/*min-width:641px;//minimum de largeur de redimensionnement avant passage dans le @media*/
 
 }
@@ -69,7 +69,7 @@ header a {
 
 .content {
 	border-top:3px rgb(113,127,133) solid;
-	border-bottom:3px rgb(113,127,133) solid;
+	/*border-bottom:3px rgb(113,127,133) solid;*/
 	margin-top:1%;
 	padding-bottom:2%;/****************************************/
 }
@@ -144,43 +144,10 @@ form {
 	color:white;
 }
 
-.comment_add{
-	border-top:2px rgb(113,127,133) solid;
-	padding-left:10%;
-}
-.comment_add p {
-	color:blue;
-}
-
-label,textarea,button {
-	display:block;
-	margin-top:3%;
-}
-
-textarea {
-	width:100%;
-}
-.comment_add button {
-	float : right;
-	background-color:rgb(107,182,193);
-	color:white;
-}
-
-.comment_add form label input,#ajout input {
-	width:50%;
-}
 article h1 {
 	margin-top:0%;
 	font-family:'Comic Sans MS', cursive;
 	font-size:150%;
-}
-
-/* le retour vers le main menu n'est visible que sur mobile donc on le cache par défaut*/
-#skipTo {
-	display: none;
-}
-#skipTo li {
-	background: #b1fffc;
 }
 
 
@@ -191,21 +158,18 @@ article h1 {
 header h1 {
 width : 80%;
 }
-	/*#skipTo {
-		display: block;
-	}*/
 	
 	* { margin: 0; padding: 0; }
 	
 	body {
 		/*width:100%;*/
-		min-width : 401px;
+	min-width : 401px;
 	}
 	
 	
-	header nav/*, #main, aside*/ {
+	header nav{
 		float: left;
-		margin: 0 0 10px; 
+		margin: 0 0 1%; 
 		width: 100%;
 	}	
 	header nav ul{
@@ -230,20 +194,13 @@ width : 80%;
 }
 
 @media screen and (max-width: 400px) {
-* { margin: 0; padding: 0; }
+/* *{ margin: 0; padding: 0; }*/
 
-	/*#skipTo {
-		display: block;
-	}*/
 	body {
 	text-align : center;
-	min-width : 320px;
+	min-width : 240px;
 	}
-	/*header nav/*, #main, aside {
-		/*float: left;
-		margin: 0 0 10px; 
-		width: 100%;
-	}	*/
+	
 	header nav ul{
 		right: 0px;
 		position:relative;
