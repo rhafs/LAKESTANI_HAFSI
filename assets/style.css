@@ -149,12 +149,12 @@ form {
 	color:blue;
 }
 
-.comment_add form label,.comment_add form textarea,.comment_add form button,#ajout{
+label,textarea,button {
 	display:block;
 	margin-top:3%;
 }
 
-.comment_add form textarea {
+textarea {
 	width:100%;
 }
 .comment_add button {
@@ -163,7 +163,7 @@ form {
 	color:white;
 }
 
-.comment_add form label input {
+.comment_add form label input,#ajout input {
 	width:50%;
 }
 article h1 {
