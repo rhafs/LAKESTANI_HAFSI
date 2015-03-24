@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="assets/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/search_style.css">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/add_style.css">
     <title>Blog sur Christopher Nolan</title>
   </head>
  <body>
@@ -31,25 +31,14 @@
 	</header>
 	<section class="content">
 		<section class="left_side">
-			<h1>Liste des articles</h1>
-			<table>
-				<tr>
-					<th>Titre</th>
-					<th>Date de publication</th>
-				</tr>
-				<tr>
-					<td><a href="biographie.html">Biographie de Chritopher Nolan</a></td>
-					<td>22 Mars 2015</td>
-				</tr>
-				<tr>
-					<td>Liste des Films</td>
-					<td>23 Mars 2015</td>
-				</tr>
-				<tr>
-					<td>Critique d'Interstellar</td>
-					<td>24 Mars 2015</td>
-				</tr>
-			</table>
+			<h1>Vous pouvez ajouter un nouvel article</h1>
+			<form action="recherche.html" id="ajout">
+				<label>Titre de l'article : <input type="text" name="titre"></label>
+				<label>Résumé de l'article : <textarea name="resume" rows=2></textarea></label>
+				<label>Contenu de l'article : <textarea name="art"></textarea>
+				<label>Choisissez l'image à associer à l'article : <input type="file" method="post" enctype="multipart/form-data" name="image"></label>
+				<button>Soumettre l'article</button>
+			</form>
 		</section>
 		<aside>
 			<h1>Zone de recherche</h1>
