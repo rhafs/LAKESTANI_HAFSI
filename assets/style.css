@@ -1,11 +1,9 @@
 body {
 	background: url("fondBeige.jpg");
-	min-width: 801px;
+	min-width: 801px;	/*minimum de largeur de redimensionnement avant passage dans le @media*/
 	margin-left:auto;
 	margin-right:auto;
 	width:80%;
-	/*min-width:641px;//minimum de largeur de redimensionnement avant passage dans le @media*/
-
 }
 
 header {
@@ -26,12 +24,11 @@ header #bg{
 }
 
 header h1 {
-	margin-top:2%;
+	top:2.5%;
 	display:block;
 	position:relative;
 	left:7%;
-	width:39%;
-	vertical-align: center;
+	width:30%;
 	color:#000090;
 	background-color:white;
 	opacity:0.5;
@@ -40,19 +37,18 @@ header h1 {
 	font-size:1.6em;
 }
 
-/* La barre de navigation est en mode horizontal par défaut */
 header nav {
-	float: right;
-	margin-bottom: 0px; 
+	float: right; 
 }
 
 header nav ul{
 	position: absolute;
-	right: 50px;
-	bottom: 0px;
-	margin-bottom: 3px; 
+	right: 2.5%;
+	bottom: 0%;
+	margin-bottom: 0.4%; 
 }
-	
+
+/* La barre de navigation est en mode horizontal par défaut */	
 header nav li {
 	display: inline;
 	border: 2px solid black;
@@ -67,16 +63,18 @@ header a {
 	color: color:#000090;
 }
 
+/* La classe content contient toute la page excepté le header et le footer */
 .content {
 	border-top:3px rgb(113,127,133) solid;
-	/*border-bottom:3px rgb(113,127,133) solid;*/
+	border-bottom:3px rgb(113,127,133) solid;
 	margin-top:1%;
-	padding-bottom:2%;/****************************************/
+	padding-bottom:2%;
 }
 
+/* La classe left_side contient tout ce qui est à gauche, donc ne contient pas la barre de recherche */
 .left_side {
 	text-align: justify;
-	width: 59%;
+	width: 60%;
 	margin-top: 1.5%;
 	display: inline-block;
 	vertical-align: middle;
@@ -84,6 +82,7 @@ header a {
 	margin-right:auto;
 }
 
+/* aside correspond à la barre de recherche */
 aside {
 	width:20%;
 	display: inline-block;
@@ -93,7 +92,7 @@ aside {
 	margin-left:10%;
 }
 
-aside h1,aside input,aside form {
+aside,aside input {
 	text-align:center;
 }
 
@@ -104,16 +103,18 @@ aside h1 {
 
 footer {
 	margin-top:0%;
-	padding-left:20px;
+	padding-left:6.67%;
 }
 
 img{
 	display: block;
 	margin-left: auto;
 	margin-right: auto; 
+	width:256px;
 }
 
-article img+p {
+figcaption{
+	margin-top:2%;
 	text-align:center;
 	font-style:italic;
 }
@@ -123,10 +124,12 @@ footer img {
 	height:70px;
 }
 
+/* permet d'espacer tous les champs de formulaires de toutes les pages */
 form {
 	margin-bottom:5%;
 }
 
+/* La classe comment_content contient tous les commentaires */
 .comment_content {
 	border-radius:0.5em;
 	border:2px solid black;
@@ -136,10 +139,12 @@ form {
 	padding-right:10%;
 }
 
+/* Permet de colorer le pseudo du commentateur */
 .comment_content>p:first-child {
 	color:blue;
 }
 
+/* Permet de colorer la date */
 .comment_content>p:nth-child(2) {
 	color:white;
 }
@@ -151,15 +156,13 @@ article h1 {
 }
 
 
-/* Media Queries */
+/* Media Queries : nous avons fixé une première largeur maximale à 800 px car c'est à cette largeur que l'ergonomie n'est plus adaptée*/
 @media screen and (max-width: 800px) {
 	* { margin: 0; padding: 0; }
 
 	header h1 {
 		width : 80%;
 	}
-	
-	
 	
 	body {
 		/*width:100%;*/
