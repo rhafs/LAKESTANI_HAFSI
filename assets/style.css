@@ -153,17 +153,17 @@ article h1 {
 
 /* Media Queries */
 @media screen and (max-width: 800px) {
-* { margin: 0; padding: 0; }
-
-header h1 {
-width : 80%;
-}
-	
 	* { margin: 0; padding: 0; }
+
+	header h1 {
+		width : 80%;
+	}
+	
+	
 	
 	body {
 		/*width:100%;*/
-	min-width : 401px;
+		min-width : 401px;
 	}
 	
 	
@@ -194,7 +194,6 @@ width : 80%;
 }
 
 @media screen and (max-width: 400px) {
-/* *{ margin: 0; padding: 0; }*/
 
 	body {
 	text-align : center;
@@ -206,7 +205,7 @@ width : 80%;
 		position:relative;
 		margin: 0 0 0px; 
 		width: 100%;
-	}*/
+	}
 	header nav li {
 		margin: 0;
 		display: block;
