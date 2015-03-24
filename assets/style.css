@@ -141,6 +141,31 @@ form {
 	color:white;
 }
 
+.comment_add{
+	border-top:2px rgb(113,127,133) solid;
+	padding-left:10%;
+}
+.comment_add p {
+	color:blue;
+}
+
+.comment_add form label,.comment_add form textarea,.comment_add form button,#ajout{
+	display:block;
+	margin-top:3%;
+}
+
+.comment_add form textarea {
+	width:100%;
+}
+.comment_add button {
+	float : right;
+	background-color:rgb(107,182,193);
+	color:white;
+}
+
+.comment_add form label input {
+	width:50%;
+}
 article h1 {
 	margin-top:0%;
 	font-family:'Comic Sans MS', cursive;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/add_style.css">
+    <title>Blog sur Christopher Nolan</title>
+  </head>
+ <body>
+	<header>
+		<div id="bg">
+			<h1>Bienvenue sur notre Blog<br> de Christopher Nolan</h1>
+		</div>
+				<nav id="skipTo">
+			<ul>
+				<li>
+					<a href="index.html" title="Skip to Main Content">Retour à l'accueil</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<nav>
+			<ul>
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="ajout.html">Ajouter un article</a></li>
+				<li><a href="recherche.html">Rechercher un article</a></li>
+				<li><a href="propos.html">A propos</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="content">
+		<section class="left_side">
+			<h1>Vous pouvez ajouter un nouvel article</h1>
+			<form action="recherche.html" id="ajout">
+				<label>Titre de l'article: <input type="text" name="titre"></label>
+				<label>Résumé de l'article : <input type="text" name="resume"></label>
+				<textarea placeholder="tapez votre article ici"></textarea>
+				<label>Choisissez l'image à associer à l'article : <input type="file" method="post" enctype="multipart/form-data" name="image"></label>
+				<button>Soumettre l'article</button>
+			</form>
+		</section>
+		<aside>
+			<h1>Zone de recherche</h1>
+			<form method="get" action="recherche.html">
+			<input type="search" placeholder="Entrez un mot-clef" name="the_search">
+			</form>
+		</aside>
+	</section>
+	<footer>
+		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
+		<p>HAFSI Rachida LAKESTANI Diane</p>
+	</footer>
+ </body>
+</html>
