@@ -79,9 +79,11 @@ header a {
 	padding-bottom:2%;
 }
 
+article p,.comment_content p {
+	text-align: justify;
+}
 /* La classe left_side contient tout ce qui est à gauche, donc ne contient pas la barre de recherche */
 .left_side {
-	text-align: justify;
 	width: 60%;
 	margin-top: 1.5%;
 	display: inline-block;
@@ -104,6 +106,9 @@ aside,aside input {
 	text-align:center;
 }
 
+aside input {
+	width:70%;
+}
 aside h1 {
 	padding-left:5%;
 	padding-right : 5%;
@@ -111,6 +116,10 @@ aside h1 {
 
 footer {
 	margin-top:0%;
+}
+
+footer p {
+	margin-left:6.67%;
 }
 
 figure img{
@@ -311,7 +320,7 @@ header #bg2 {
 		display: block;
 		margin-left: auto;
 		margin-right: auto; 
-		width:50%;
+		width:30%;
 	}
 }
 

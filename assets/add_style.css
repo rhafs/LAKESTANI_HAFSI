@@ -1,42 +1,49 @@
 #ajout label {
+	display:block;
+	margin-bottom:3%;
 	font-weight:bold;
 }
 
-h1 {
-	font-family:'Comic Sans MS', cursive;
+#ajout label input, #ajout label textarea {
+	display:block;
 }
 
+#ajout {
+	margin-left:10%;
+}
 
+#ajout button {
+	height:15%;
+	width:20%;
+	border-radius:0.5em;
+}
 
-
+/*
 @media screen and (max-width: 400px) {
+	.content {
+		border-top :none;
+	}
 
-.content {
-border-top :none;
+	.left_side {
+		text-align : left;
+	}
 
-}
+	label{
+		margin-top:3%;
+		display : block;
+	}
 
-.left_side {
+	aside{
+		min-width:95%;
+		margin-left:4%;
+	}
 
-text-align : left;
+	img{
+		width : 30%;
+	}
 
-}
-
-label{
-margin-top:3%;
-display : block;
-}
-aside{
-min-width:95%;
-margin-left:4%;
-}
-
-img{
-
-width : 30%;
-}
-
-footer p{
-margin-top: 4%;
-margin-bottom : 4%;
-}
+	footer p{
+		margin-top: 4%;
+		margin-bottom : 4%;
+	}
+*/
