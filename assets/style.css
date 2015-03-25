@@ -31,7 +31,7 @@ header #bg{
 	color:#000090;
 	background-color:white;
 	opacity:0.5;
-	filter:alpha(opacity=50);
+	/*filter:alpha(opacity=50); Normalement pour IE 5-7 mais est détecté comme erreur par le valadiateur */
 	border-radius:0.5em;
 	font-size:1.4em;
 	/* Pour centrer le titre de la page, il faut centrer l'élément de type block contenant le titre */
@@ -68,7 +68,7 @@ header nav li {
 
 
 header a {
-	color: color:#000090;
+	color: #000090;
 }
 
 /* La classe content contient toute la page excepté le header et le footer */
@@ -109,7 +109,7 @@ aside,aside input {
 aside input {
 	width:70%;
 }
-aside h1 {
+aside h2 {
 	padding-left:5%;
 	padding-right : 5%;
 }
@@ -167,7 +167,7 @@ form {
 	color:white;
 }
 
-article h1 {
+.left_side h1 {
 	margin-top:0%;
 	font-family:'Comic Sans MS', cursive;
 	font-size:150%;
@@ -229,7 +229,7 @@ header #bg2 {
 		margin-right:auto;
 	}
 	
-	article h1 {
+	.left_side h1 {
 		text-align:center;
 	}
 	
