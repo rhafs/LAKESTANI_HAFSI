@@ -3,21 +3,19 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/add_style.css">
 	<link rel="stylesheet" type="text/css" href="assets/biography_style.css">
     <title>Blog sur Christopher Nolan</title>
   </head>
  <body>
 	<header>
 		<div id="bg">
-			<h1>Bienvenue dans notre Blog<br> sur Christopher Nolan</h1>
+			<p><span id="title">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
 		</div>
-				<nav id="skipTo">
-			<ul>
-				<li>
-					<a href="index.html" title="Skip to Main Content">Retour à l'accueil</a>
-				</li>
-			</ul>
-		</nav>
+		
+		<div id="bg2">
+			<p><span id="title">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
+		</div>
 		
 		<nav>
 			<ul>
@@ -60,10 +58,10 @@
 				</div>
 				<div class="comment_add">
 					<p>LAISSER UN COMMENTAIRE</p>
-					<form action="biographie.html">
+					<form action="biographie.html" class="formulary">
 						<label>Nom : <input type="text" name="nom"></label>
 						<label>Adresse de contact : <input type="text" name="adresse"></label>
-						<textarea placeholder="tapez votre commentaire" name="comm"></textarea>
+						<label><textarea placeholder="tapez votre commentaire" name="comm"></textarea></label>
 						<button>Laisser un commentaire</button>
 					</form>
 				</div>
@@ -72,7 +70,7 @@
 		<aside>
 			<h1>Zone de recherche</h1>
 			<form method="get" action="recherche.html">
-			<input type="search" placeholder="Entrez un mot-clef" name="the_search">
+				<input type="search" placeholder="Entrez un mot-clef" name="the_search">
 			</form>
 		</aside>
 	</section>

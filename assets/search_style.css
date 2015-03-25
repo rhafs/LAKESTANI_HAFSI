@@ -1,29 +1,26 @@
-
-
 .left_side h1 {
-text-align:center;
+	text-align:center;
 }
 
 table {
-width:80%;
-margin-right:auto;
-margin-left:auto;
-border:1px black solid;
+	margin-right:auto;
+	margin-left:auto;
+	border:1px black solid;
 }
 
 table th{
-text-align:center;
-border-bottom:1px black solid;
+	text-align:center;
+	border-bottom:1px black solid;
 }
 
 table td {
-width:50%;
+	width:50%;
 }
 
 table tr:nth-child(2n) {
-background-color:rgb(226,228,255);
+	background-color:rgb(226,228,255);
 }
 
 .content {
-width:100%;
+	width:100%;
 }

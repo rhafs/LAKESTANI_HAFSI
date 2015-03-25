@@ -1,7 +1,3 @@
-aside {
-vertical-align: top;
-}
-
 figure {
 float:right;
 margin-left:1%;
@@ -20,4 +16,12 @@ width:150px;
 
 .comment_content {
 margin-bottom:5%;
+}
+
+.formulary textarea {
+	text-align:center;
+}
+
+.comment_add {
+	border-top : 3px rgb(113,127,133) solid;
 }

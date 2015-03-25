@@ -123,7 +123,7 @@ footer p {
 }
 
 figure img{
-	min-width:240px; /* 240 px est la largeur minimale d'un smartphone */
+	min-width:150px; /* 240 px est la largeur minimale d'un smartphone */
 	display: block;
 	margin-left: auto;
 	margin-right: auto; 
