@@ -230,12 +230,16 @@ header #bg2 {
 		width: 100%;
 	}	
 	header nav ul{
+		right: 0px;
+		position:relative;
 		width: 100%;
 	}
 	
 	header nav li {
 		display: block;
 		margin-bottom: 2%;
+		border-bottom-left-radius: 0.5em;
+		border-bottom-right-radius: 0.5em;
 	}
 	
 	header nav li:nth-child(4){
