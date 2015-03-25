@@ -1,6 +1,6 @@
+/* Permet de centrer toute la page */
 body {
 	background: url("fondBeige.jpg");
-	min-width: 801px;	/*minimum de largeur de redimensionnement avant passage dans le @media*/
 	margin-left:auto;
 	margin-right:auto;
 	width:80%;
@@ -21,11 +21,10 @@ header #bg{
 	background-position:center center;
 	display:inline-block;
 	height:120px;
+	vertical-align:middle;
 }
 
-header h1 {
-	top:2.5%;
-	display:block;
+#bg p {
 	position:relative;
 	left:7%;
 	width:30%;
@@ -34,11 +33,20 @@ header h1 {
 	opacity:0.5;
 	filter:alpha(opacity=50);
 	border-radius:0.5em;
-	font-size:1.6em;
+	font-size:1.4em;
+	/* Pour centrer le titre de la page, il faut centrer l'élément de type block contenant le titre */
+	height:50%;
+	line-height:50%;
+	text-align:center;
 }
 
-header nav {
-	float: right; 
+span { 
+  width:100%; /* largeur zone de texte */
+  vertical-align:middle;
+  display:inline-block;
+  line-height:normal; /* on rétablit le line-height */
+  text-align:center; /* ... et l'alignement du texte */
+  font-family:Impact, fantasy
 }
 
 header nav ul{
@@ -103,10 +111,10 @@ aside h1 {
 
 footer {
 	margin-top:0%;
-	padding-left:6.67%;
 }
 
-img{
+figure img{
+	min-width:240px; /* 240 px est la largeur minimale d'un smartphone */
 	display: block;
 	margin-left: auto;
 	margin-right: auto; 
@@ -121,12 +129,13 @@ figcaption{
 
 footer img {
 	float:right;
-	height:70px;
+	height:5em;
+	width:5em;
 }
 
 /* permet d'espacer tous les champs de formulaires de toutes les pages */
 form {
-	margin-bottom:5%;
+	padding-bottom:5%;
 }
 
 /* La classe comment_content contient tous les commentaires */
@@ -155,105 +164,152 @@ article h1 {
 	font-size:150%;
 }
 
+/* Le deuxième background sans image de fond n'est pas affiché en écran standard */
+header #bg2 {
+	display:none;
+}
 
 /* Media Queries : nous avons fixé une première largeur maximale à 800 px car c'est à cette largeur que l'ergonomie n'est plus adaptée*/
 @media screen and (max-width: 800px) {
 	* { margin: 0; padding: 0; }
+	
+	/* On n'affiche plus le background avec l'image de fond */
+	header #bg {
+		display:none;
+	}
+	
+	header #bg2{
+		width:100%;
+		display:inline-block;
+		height:5em;
+		vertical-align:middle;
+	}
 
-	header h1 {
-		width : 80%;
+	#bg2 p {
+		color:#000090;
+		border-radius:0.5em;
+		font-size:1.4em;
+		height:70px;
+		line-height:70px;
+		text-align:center;
+	}
+
+	#bg2 span { 
+		  width:100%; /* largeur zone de texte */
+		  vertical-align:middle;
+		  display:inline-block;
+		  line-height:normal; /* on rétablit le line-height */
+		  text-align:center; /* ... et l'alignement du texte */
+		  font-family:Impact, fantasy
+	}
+
+	.content {
+		display:block;
+		border-top:none;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%; /* largeur obligatoire pour être centré */
 	}
 	
-	body {
-		/*width:100%;*/
-		min-width : 401px;
+	.left_side {
+		width: 100%;
+		margin-top: 2%;
+		display: inline-block;
+		vertical-align: middle;
+		margin-left:auto;
+		margin-right:auto;
 	}
 	
+	article h1 {
+		text-align:center;
+	}
 	
 	header nav{
 		float: left;
-		margin: 0 0 1%; 
+		margin: 0 0 2%; 
 		width: 100%;
 	}	
 	header nav ul{
-		right: 0px;
-		position:relative;
-		margin: 0 0 0px; 
 		width: 100%;
 	}
+	
 	header nav li {
-		margin: 0;
 		display: block;
-		margin-bottom: 3px;
+		margin-bottom: 2%;
+	}
+	
+	header nav li:nth-child(4){
+		border-bottom:2px solid black;
 	}
 	header nav a {
 		display: block;
-		padding: 10px;
+		padding: 2%;
 		text-align: center;
-	}			
+	}		
+	
 	aside{
-	min-width:30%;
-	}
-}
-
-@media screen and (max-width: 400px) {
-
-	body {
-	text-align : center;
-	min-width : 240px;
+		min-width:30%;
+		margin-top:2%;
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+		width:30%;
 	}
 	
-	header nav ul{
-		right: 0px;
+	figure {
+		margin-top:2%;
+		margin-bottom:2%;
+	}
+	
+	.content .left_side article p+a {
 		position:relative;
-		margin: 0 0 0px; 
-		width: 100%;
+		left:42%;
 	}
-	header nav li {
-		margin: 0;
-		display: block;
-		margin-bottom: 3px;
-	}
-	header nav a {
-		display: block;
-		padding: 10px;
-		text-align: center;
-	}			
 	
+	.comment_header {
+		margin-top:2%;
+	}
+	
+	.comment_content {
+		margin-top:2%;
+		margin-left:auto;
+	}
+	
+	footer p {
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+		width:50%;
+	}
+	
+	/* Pour que le body reprenne toute la largeur de l'écran */
+	body {
+		width:auto;
+	}
+	
+	aside input {
+		width:80%;
+	}
+	
+	footer p {
+		text-align:center;
+	}
+}
+
+/* A partir de 360 px, la barre de recherche est trop petite et le logo de Lyon 1 prend trop de place */
+@media screen and (max-width: 360px) {
 	aside {
-
-/*display: inline;*/
-vertical-align: middle;
-background-color:rgb(218,220,224);
-font-family: Verdana, Geneva, sans-serif;
-min-width : 156px;/*ajouté pour que le input ne dépasse pas du inside*/
-
+		min-width:75%;
+	}
+	
+	footer img {
+		float:none;
+		display: block;
+		margin-left: auto;
+		margin-right: auto; 
+		width:50%;
+	}
 }
-
-/*header #bg h1{
-width :90%;
-padding-right:10px;
-
-}*/
-
-
-
-
-.left_side {
-text-align: justify;
-width: 90%;
-margin: 0 1.5%;
-display: inline-block;
-vertical-align: middle;
-}
-article h1{
-width :100%;
-text-align : center;
-
-}
-}
-
-
 
 
 
