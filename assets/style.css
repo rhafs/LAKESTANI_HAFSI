@@ -80,6 +80,11 @@ header a {
 }
 
 article p,.comment_content p {
+	font-family:Verdana, Geneva, sans-serif;
+	text-align: justify;
+}
+.comment_content p:nth-child(3) {
+	font-family:Lucida Caligraphy, Monotype Corsiva, cursive;
 	text-align: justify;
 }
 /* La classe left_side contient tout ce qui est à gauche, donc ne contient pas la barre de recherche */
@@ -173,6 +178,9 @@ form {
 	font-size:150%;
 }
 
+article {
+
+}
 /* Le deuxième background sans image de fond n'est pas affiché en écran standard */
 header #bg2 {
 	display:none;
@@ -261,12 +269,11 @@ header #bg2 {
 	}		
 	
 	aside{
-		min-width:30%;
+		min-width:50%;
 		margin-top:2%;
 		display:block;
 		margin-left:auto;
 		margin-right:auto;
-		width:30%;
 	}
 	
 	figure {

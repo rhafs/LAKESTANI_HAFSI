@@ -25,3 +25,7 @@ margin-bottom:5%;
 .comment_add {
 	border-top : 3px rgb(113,127,133) solid;
 }
+
+em {
+	color:blue;
+}
