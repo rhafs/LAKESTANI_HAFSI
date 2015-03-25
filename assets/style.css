@@ -135,6 +135,10 @@ figure img{
 	width:256px;
 }
 
+#station {
+	width:300px;
+}
+
 figcaption{
 	margin-top:2%;
 	text-align:center;
@@ -186,6 +190,9 @@ header #bg2 {
 	display:none;
 }
 
+em {
+	color:blue;
+}
 /* Media Queries : nous avons fixé une première largeur maximale à 800 px car c'est à cette largeur que l'ergonomie n'est plus adaptée*/
 @media screen and (max-width: 800px) {
 	* { margin: 0; padding: 0; }
