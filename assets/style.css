@@ -24,7 +24,7 @@ header #bg{
 	vertical-align:middle;
 }
 
-#bg p {
+#bg p:first-child {
 	position:relative;
 	left:7%;
 	width:30%;
@@ -194,7 +194,7 @@ header #bg2 {
 		vertical-align:middle;
 	}
 
-	#bg2 p {
+	#bg2 p:first-child {
 		color:#000090;
 		border-radius:0.5em;
 		font-size:1.4em;

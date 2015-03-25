@@ -14,7 +14,7 @@
 		</div>
 		
 		<div id="bg2">
-			<p><span id="title">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
+			<p><span id="title2">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
 		</div>
 		
 		<nav>
@@ -26,24 +26,24 @@
 			</ul>
 		</nav>
 	</header>
-	<section class="content">
+	<div class="content">
 		<section class="left_side">
 			<h1>Vous pouvez ajouter un nouvel article</h1>
-			<form action="recherche.html" class="formulary">
+			<form action="recherche.html" method="post" enctype="multipart/form-data" class="formulary">
 				<label>Titre de l'article : <input type="text" name="titre"></label>
 				<label>Résumé de l'article : <textarea name="resume" rows=2></textarea></label>
 				<label>Contenu de l'article : <textarea name="art"></textarea></label>
-				<label>Choisissez l'image à associer à l'article : <input type="file" method="post" enctype="multipart/form-data" name="image"></label>
+				<label>Choisissez l'image à associer à l'article : <input type="file" name="image"></label>
 				<button>Soumettre l'article</button>
 			</form>
 		</section>
 		<aside>
 			<h2>Zone de recherche</h2>
 			<form method="get" action="recherche.html">
-			<input type="search" placeholder="Entrez un mot-clef" name="the_search">
+				<input type="search" placeholder="Entrez un mot-clef" name="the_search">
 			</form>
 		</aside>
-	</section>
+	</div>
 	<footer>
 		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
 		<p>HAFSI Rachida LAKESTANI Diane</p>

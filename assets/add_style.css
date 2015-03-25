@@ -20,33 +20,3 @@
 	border-radius:0.5em;
 	margin-top:2%;
 }
-
-/*
-@media screen and (max-width: 400px) {
-	.content {
-		border-top :none;
-	}
-
-	.left_side {
-		text-align : left;
-	}
-
-	label{
-		margin-top:3%;
-		display : block;
-	}
-
-	aside{
-		min-width:95%;
-		margin-left:4%;
-	}
-
-	img{
-		width : 30%;
-	}
-
-	footer p{
-		margin-top: 4%;
-		margin-bottom : 4%;
-	}
-*/
