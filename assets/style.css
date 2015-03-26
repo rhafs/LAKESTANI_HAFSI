@@ -193,6 +193,31 @@ header #bg2 {
 em {
 	color:blue;
 }
+
+/* Style des formulaires présents dans les fichiers ajout.html, biographie.html et interstellar.html */
+.formulary label {
+	display:block;
+	margin-bottom:3%;
+	font-weight:bold;
+}
+
+.formulary label input, .formulary label textarea {
+	display:block;
+	width:50%;
+}
+
+.formulary {
+	margin-left:10%;
+}
+
+.formulary button {
+	display:block;
+	height:5em;
+	width:10em;
+	border-radius:0.5em;
+	margin-top:2%;
+}
+
 /* Media Queries : nous avons fixé une première largeur maximale à 800 px car c'est à cette largeur que l'ergonomie n'est plus adaptée*/
 @media screen and (max-width: 800px) {
 	* { margin: 0; padding: 0; }

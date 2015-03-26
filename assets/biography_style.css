@@ -1,21 +1,21 @@
 figure {
-float:right;
-margin-left:1%;
-margin-right:1%;
-text-align:center;
+	float:right;
+	margin-left:1%;
+	margin-right:1%;
+	text-align:center;
 }
 
 .left_side {
-vertical-align: top;
+	vertical-align: top;
 }
 
 figure img {
-height:200px;
-width:150px;
+	height:200px;
+	width:150px;
 }
 
 .comment_content {
-margin-bottom:5%;
+	margin-bottom:5%;
 }
 
 .formulary textarea {
@@ -24,8 +24,4 @@ margin-bottom:5%;
 
 .comment_add {
 	border-top : 3px rgb(113,127,133) solid;
-}
-
-em {
-	color:blue;
 }
