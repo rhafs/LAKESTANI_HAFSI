@@ -10,8 +10,7 @@ figure {
 }
 
 figure img {
-	height:200px;
-	width:150px;
+	width:240px;
 }
 
 .comment_content {
@@ -24,4 +23,23 @@ figure img {
 
 .comment_add {
 	border-top : 3px rgb(113,127,133) solid;
+}
+
+#station {
+	width:240px;
+	height:200px;
+}
+
+@media screen and (max-width: 800px) {
+	figure {
+		float:none;
+	}
+	
+	figure img,#station{
+		display: block;
+		margin-left: auto;
+		margin-right: auto; 
+		width:240px;/* 240px est la largeur minimale d'un smartphone */
+		margin-top:5%;
+	}
 }
