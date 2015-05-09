@@ -1,6 +1,4 @@
 <?php 
-//ini_set("display_errors", "on");
-//error_reporting(-1);
 
 require_once "bdd.php";
 require_once "menu.php";
@@ -18,96 +16,101 @@ require_once "menu.php";
  <body>
 	
 	<?php 
-	//affichager d'header de la page
+	//affichage du menu et du bandeau supérieur de la page
 	afficherMenu();
 	?>
 	
 	<div class="content">
-		<div class="left_side">
+		<section class="left_side">
 			<article>
 			<?php 
 			$bdd = Connect_db();
 			
-			/*
-			$query=$bdd->prepare('SELECT resume
-                       FROM article
-                       WHERE id = ?
-                       ');
-			$query->execute(array(1));
-			**/
-			
+			//récupération de l'article ajouté en dernier
 			$query=$bdd->prepare('SELECT id,titre,resume,image
                        FROM article
                        WHERE date = (select max(date) from article)
                        ');
 			$query->execute();
 			
-			//initialise un tableau pour r�cup�rer indice + contenu
-			//$test = array();
-			
 			$test = "";
 			
-			//dans la boucle on r�cup�re un enregistrement qui est mis dans data
+			//dans la boucle on r�cup�re un enregistrement qui est mis dans data
 			while($data = $query->fetch()) { // lecture par ligne
-				//crochets pour ajouter chaque ligne de data ds test
 				$test = $data;
-				
-			} // fin des donn�es
+			} // fin des donn�es
 			
 			//affichage du contenu de test
-// 			echo "<pre>";
-// 				print_r($test);
-// 				echo "</pre>";
+			// echo "<pre>";
+			// print_r($test);
+			// echo "</pre>";
 			
 			$query->closeCursor();
 			
-			echo "<h1>";
-			echo $test['titre'];
-			echo "</h1>";
+			if ($test != "") {
 			
-			echo $test['resume'];
-			echo "<img src='".$test['image']."'>";
-			
-			?>
-			<br><br>
-			<!-- href avant =bibliographie, fait le lien entre le r�sum� de la page d'accueil et lire la suite -->
-			<a href="contenu.php?id=<?=$test['id']?>">Lire la suite</a>
+				echo "<h1>";
+				echo $test['titre'];
+				echo "</h1>";
 				
-			</article>
-			
-			<?php 
-			
-			$data = "";
-			$query=$bdd->prepare('SELECT user.nom,commentaire.date,commentaire.contenu
-                       FROM commentaire inner join user on user.id = commentaire.user_id
-                       WHERE commentaire.date = (select max(date) from commentaire where article_id = ?) '.
-						'and commentaire.article_id = ?');
-			$query->execute(array($test['id'],$test['id']));
-			$data = $query->fetch();
-			
-			//print_r($test);
+				echo $test['resume'];
+				echo "<img src='".$test['image']."'>";
+				
+				?>
+				<br><br>
+				<!-- href fait le lien entre le r�sum� de la page d'accueil et lire la suite -->
+				<a href="contenu.php?id=<?=$test['id']?>">Lire la suite</a>
+					
+				</article>
+				
+				<?php 
+				/* Récupération du dernier commentaire de l'article. On traite le cas où deux utilisateurs différents ajoutent 
+				 * deux commentaires pour deux articles différents exactement en même temps. En effet, le dernier commentaire ajouté
+				 * ne correspond pas forcément à celui du dernier article.
+				 */
+				$data = "";
+				$query=$bdd->prepare('SELECT user.nom,commentaire.date,commentaire.contenu
+	                       FROM commentaire inner join user on user.id = commentaire.user_id
+	                       WHERE commentaire.date = (select max(date) from commentaire where article_id = ?) 
+							and commentaire.article_id = ?'
+									);
+				$query->execute(array($test['id'],$test['id']));
+				$data = $query->fetch();
+				
+				//print_r($test);
+				
+				if ($data != "") {
+				?>
+				<div class="comments">
+					<section class="comment_header">
+						<h2>Dernier commentaire :</h2>
+					</section>
+					<?php
+					// On envoie en paramètres de la fonction les données récupérées, c'est-à-dire les données du dernier commentaire du dernier article
+					if (is_array($data)) {
+						afficherCommentaire($data['nom'], $data['date'], $data['contenu']);
+					}
+					?>
+				</div>
+				<?php
+				} else {
+					echo "Cet article n'a aucun commentaire, vous pouvez en ajouter un en cliquant sur Lire la suite."; 
+				}	
+		
+			} else {
+				echo "Il n'y a aucun article dans la base de données.";
+			}
 			
 			?>
-			
-			<div class="comments">
-				<section class="comment_header">
-					<h2>Dernier commentaire :</h2>
-				</section>
-				<?php
-				if (is_array($data)) {
-					afficherCommentaire($data['nom'], $data['date'], $data['contenu']);
-				}
-				?>
-			</div>
-			
-		</div>
-		<?php 
-		afficherZone();
-		?>
+			</section>
+			<?php 
+			// Cette fonction permet d'afficher la barre latérale.
+			afficherZone();
+			?>
 	</div>
-	<footer>
-		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
-		<p>HAFSI Rachida LAKESTANI Diane</p>
-	</footer>
+	<?php
+	// Cette fonction affiche le pied de page.
+	afficherFooter()
+	?>
  </body>
 </html>

@@ -36,9 +36,8 @@ require_once "menu.php";
 	afficherZone();
 	?>
 	</div>
-	<footer>
-		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
-		<p>HAFSI Rachida LAKESTANI Diane</p>
-	</footer>
+	<?php
+	afficherFooter()
+	?>
  </body>
 </html>

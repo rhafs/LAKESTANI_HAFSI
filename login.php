@@ -16,7 +16,7 @@ if (isset($_POST) && count($_POST) > 0) {
 			
 			$bdd = Connect_db();
 			
-			$test = array();
+			$user = array();
 			
 			$query=$bdd->prepare('SELECT id,nom,type
                        			FROM user
@@ -30,28 +30,38 @@ if (isset($_POST) && count($_POST) > 0) {
 			
 			}
 			
-			//print_r($test);
+			$query->closeCursor();
+			
+			//print_r($user);
 			
 			//connection ok
 			if (isset($test['nom'])) {
 				$login = 0;
 				
-				//fixé les varaibles de session
+				//fixer les variables de session
 				$_SESSION['login'] = $_POST['login'];
-				$_SESSION['user_id'] = $test['id'];
-				$_SESSION['user_nom'] = $test['nom'];
-				$_SESSION['user_type'] = $test['type'];
+				$_SESSION['user_id'] = $user['id'];
+				$_SESSION['user_nom'] = $user['nom'];
+				$_SESSION['user_type'] = $user['type'];
 				
 			} else {
 				//connection ko
 				$login = 1;
 			}
-		
+			
 		} else {
-			$login = 2;
+			$login = 4;
 		}
 	} else {
-		$login = 2;
+		
+		if ((isset($_POST['pass']) && trim($_POST['pass']) == "")) {
+			//les deux
+			$login = 5;
+		} else {
+			//login manquant
+			$login = 3;
+		}
+		
 	}
 	
 } else {
@@ -83,19 +93,31 @@ if (isset($_POST) && count($_POST) > 0) {
 			
 		} else {
 		
-		?>
-		<section class="left_side">
-		</section>
-		<?php 
+			?>
+			<section class="left_side">
+				<?php 
+				if ($login == 1) {
+					echo "L'utilisateur n'existe pas dans la base.";
+				}
+				if ($login == 3) {
+					echo "Le login est manquant.";
+				}
+				if ($login == 4) {
+					echo "Le mot de passe est manquant.";
+				}
+				if ($login == 5) {
+					echo "Le login et le mot de passe sont manquants.";
+				}
+				?>
+			</section>
+			<?php 
 		}
 		afficherZone();
 		?>
 		
 	</div>
-	<footer>
-		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
-		<p>HAFSI Rachida LAKESTANI Diane</p>
-		
-	</footer>
+	<?php
+	afficherFooter()
+	?>
  </body>
 </html>

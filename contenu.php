@@ -2,23 +2,16 @@
 include_once 'bdd.php';
 require_once "menu.php";
 
-//print_r($_POST);
-
-
-// if (isset($_GET['id'])) {
-// 	$id_article = $_GET['id'];
-// } else if (isset($_POST['id'])) {
-// 	$id_article = $_POST['id'];
-// }
-
-// $_GET['id'] = $id_article;
-
-//ajout d'un commentaire
+//ajout d'un commentaire. On vérifie qu'une variable a été passée en post et que le tableau $_POST n'est pas vide.
 if (isset($_POST) && count($_POST) > 0) {
-	//recup info sur article
+	
+	// $_POST['comm'] contient le champ correspondant au textarea du formulaire d'ajout de commentaire plus bas
 	$comm = $_POST['comm'];
-
+	
+	/* La fonction trim permet d'enlever tous les espaces, ça permet d'éviter d'afficher les commentaires formés seulement d'espaces.
+	On vérifie qu'un utilisateur est connecté, il est impossible d'ajouter un commentaire sans être connecté.*/
 	if (trim($comm) != "" && isset($_SESSION['user_id'])) {
+		// $_GET['id'] correspond à l'id de l'article, et $comm au texte du commentaire.
 		addCommentaire($_GET['id'],$comm);
 	}
 }
@@ -36,7 +29,7 @@ if (isset($_POST) && count($_POST) > 0) {
  <body>
  
 	<?php 
-	//affichager d'header de la page
+	//affichager du menu et du bandeau supérieur de la page
 	afficherMenu();
 	?>
 	
@@ -55,27 +48,36 @@ if (isset($_POST) && count($_POST) > 0) {
 			
 			$data = $query->fetch();
 			
-			//$query->closeCursor();
+			// SI l'utilisateur est administrateur il peut modifier un article
+			if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+			// On conserve en Get la valeur déjà passée en Get grâce au href
+			echo "<a href='ajout.php?id=".$_GET['id']."'>Modififier article</a>";
+			}
 			
 			echo "<h1>";
 			echo $data['titre'];
 			echo "</h1>";
 			
+			// Le champ image de la base de données contient le chemin vers le fichier image correspondant à l'article
 			echo "<figure><img src='".$data['image']."'></figure>";
 			echo $data['contenu'];
 			
 			$commentaires = array();
+			/* On sélectionne tous les commentaires de l'article correspondant à l'id passé en Get. On fait une jointure avec
+			l'utilisateur pour récupérer le nom. On classe les articles par ordre croissant de date */
 			$query=$bdd->prepare('SELECT user.nom,commentaire.date,commentaire.contenu
                        FROM commentaire inner join user on user.id = commentaire.user_id
                        WHERE commentaire.article_id = ? order by date asc');
 			$query->execute(array($_GET['id']));
 			
-			$data = "";
 			while($data = $query->fetch()) { // lecture par ligne
-				//crochets pour ajouter chaque ligne de data ds test
+				/*crochets pour ajouter chaque ligne de $data ds $commentaires. $commentaires est donc un tableau de tableaux.
+				Plus tard on utilisera $comment qui sera un tableau associatif contenant le nom, la date et le contenu de chaque commentaire.*/
 				$commentaires[] = $data;
 			
 			}
+			
+			$query->closeCursor();
 			
 			?>
 			</article>
@@ -94,6 +96,7 @@ if (isset($_POST) && count($_POST) > 0) {
 					?>
 					<div class="comment_add">
 						<p>LAISSER UN COMMENTAIRE</p>
+						<!-- Il faut garder en GET l'id de l'article qui avait déjà passé en get grâce au href dans index.php ou recherche.php-->
 						<form action="contenu.php?id=<?=$_GET['id']?>" method='post' class="formulary">
 							<label>
 							<textarea placeholder="tapez votre commentaire" name="comm"></textarea></label>
@@ -110,9 +113,8 @@ if (isset($_POST) && count($_POST) > 0) {
 		afficherZone();
 		?>
 	</div>
-	<footer>
-		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
-		<p>HAFSI Rachida LAKESTANI Diane</p>
-	</footer>
+	<?php
+	afficherFooter()
+	?>
  </body>
 </html>

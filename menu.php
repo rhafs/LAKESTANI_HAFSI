@@ -16,6 +16,7 @@ function afficherMenu() {
 				<li><a href="index.php">Accueil</a></li>
 				
 				<?php 
+				// Si l'utilisateur est administrateur, il pourra ajouter un article
 				if (isset($_SESSION['user_type']) && $_SESSION['user_type']== 1 ) {
 					?>
 					<li><a href="ajout.php">Ajouter un article</a></li>
@@ -64,6 +65,8 @@ function afficherZone() {
 			$query=$bdd->prepare('SELECT count(1) as nb FROM commentaire WHERE user_id = ?');
 			$query->execute(array($_SESSION['user_id']));
 			$data = $query->fetch();
+			
+			$query->closeCursor();
 				
 			$nb_commentaires = $data['nb'];
 
@@ -95,14 +98,31 @@ function afficherZone() {
 	
 }
 
+/**
+ * 
+ *  $nom correspond au nom de l'tilisateur ayant ajouté le commentaire
+ *  $date correspond à la date à laquelle l'utilisateur a ajouté le commentaire
+ *  $contenu correspond au contenu du commentaire ajouté
+ */
 function afficherCommentaire($nom,$date,$contenu) {
+// $nom $date $contenu correspondent 
 ?>
 	<div class="comment_content">
+		<!-- La fonction convertDate permet de convertir une date du format sql au format français -->
 		<p><?=$nom?></p> <p><?=convertDate($date)?></p>
 		<p><?=$contenu?></p>
 	</div>
 <?php 
 
+}
+
+function afficherFooter() {
+?>
+	<footer>
+	<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
+	<p>HAFSI Rachida LAKESTANI Diane</p>
+	</footer>
+<?php
 }
 
 ?>

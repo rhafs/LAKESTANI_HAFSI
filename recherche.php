@@ -65,7 +65,7 @@ require_once "menu.php";
 					echo "<tr>";
 					
 					echo "<td><a href='contenu.php?id=".$data['id']."'>".$data['titre']."</a></td>".
-							"<td>".convertDate($data['date'])."</td>";
+							"<td>".convertDate($data['derniere_date'])."</td>";
 					
 					echo "</tr>";
 				}
@@ -80,9 +80,8 @@ require_once "menu.php";
 		afficherZone();
 		?>
 	</div>
-	<footer>
-		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
-		<p>HAFSI Rachida LAKESTANI Diane</p>
-	</footer>
+	<?php
+	afficherFooter()
+	?>
  </body>
 </html>
