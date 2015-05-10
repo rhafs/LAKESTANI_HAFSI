@@ -1,11 +1,3 @@
-<?php 
-//ini_set("display_errors", "on");
-//error_reporting(-1);
-
-require_once "bdd.php";
-require_once "menu.php";
-
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,10 +8,24 @@ require_once "menu.php";
     <title>Blog sur Christopher Nolan</title>
   </head>
  <body>
-	<?php 
-	
-	afficherMenu();
-	?>
+	<header>
+		<div id="bg">
+			<p><span id="title">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
+		</div>
+		
+		<div id="bg2">
+			<p><span id="title2">Bienvenue dans notre Blog sur Christopher Nolan</span><p>
+		</div>
+		
+		<nav>
+			<ul>
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="ajout.html">Ajouter un article</a></li>
+				<li><a href="recherche.html">Rechercher un article</a></li>
+				<li><a href="propos.html">A propos</a></li>
+			</ul>
+		</nav>
+	</header>
 	<div class="content">
 		<div class="left_side">
 			<article>
@@ -32,12 +38,16 @@ require_once "menu.php";
 				<p>Merci pour votre attention ! </p>
 			</article>
 		</div>
-	<?php 
-	afficherZone();
-	?>
+		<aside>
+			<h2>Zone de recherche</h2>
+			<form method="get" action="recherche.html">
+			<input type="search" placeholder="Entrez un mot-clef" name="the_search">
+			</form>
+		</aside>
 	</div>
-	<?php
-	afficherFooter()
-	?>
+	<footer>
+		<img alt="logo de Lyon 1" src="assets/IUTLyon1.png"/>
+		<p>HAFSI Rachida LAKESTANI Diane</p>
+	</footer>
  </body>
 </html>
