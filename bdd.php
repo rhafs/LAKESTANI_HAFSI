@@ -1,24 +1,26 @@
 <?php
-/* Le ficehier bdd.php est inclus au début de chaque page, donc il est mieux de faire commencer la session ici
+/* Le fichier bdd.php est inclus au début de chaque page, donc il est mieux de faire commencer la session ici
 pour qu'elle reste active sur chaque page et que l'on puisse se resservir des variables de session entre toutes les pages. */
 session_start();
 
 
+ 
 function Connect_db() {
 	$host="localhost"; // ou sql.hebergeur.com
 	$user="root";      // ou login
 	$password="";      // ou xxxxxx
 	$dbname="sitenolan";
+	
+	/* Par défaut ATTR_ERRMODE est en mode silent, de cette façon on aura des alertes et des exceptions au moment de la connection à la base de données.
+	Il faut faire attention à placer le setAttribute au moment du try catch. */
+	
 	try {
 		$bdd=new PDO('mysql:host='.$host.';dbname='.$dbname.
-				';charset=utf8',$user,$password);
+				';charset=utf8',$user,$password,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 		return $bdd;
 	} catch (Exception $e) {
 		die('Erreur : '.$e->getMessage());
 	}
-	
-	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
 }
 
 

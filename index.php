@@ -1,5 +1,5 @@
 <?php 
-
+// Toutes les fonctions d'affichage sont dans menu.php, et les autres fonctions sont dans bdd.php
 require_once "bdd.php";
 require_once "menu.php";
 
@@ -33,33 +33,37 @@ require_once "menu.php";
                        ');
 			$query->execute();
 			
-			$test = "";
+			/* On initialise $dernier_article pour traiter le cas où il n'y a aucun article dans la base de données.
+			Au cas où on ne passe pas dans le if, la variable dernier_article n'existerait pas, et on ne peut pas tester l'existence d'une variable en php.*/
+			$dernier_article = "";
 			
-			//dans la boucle on r�cup�re un enregistrement qui est mis dans data
-			while($data = $query->fetch()) { // lecture par ligne
-				$test = $data;
-			} // fin des donn�es
+			/*Dans la boucle on récupère un enregistrement qui est mis dans data. Il n'y a qu'un seul résultat, donc on met un if et non un while.
+			On veut réutiliser le tableau retourné par la requête plus tard donc on le conserve dans une variable.*/
+			if($data = $query->fetch()) { // lecture par ligne
+				$dernier_article = $data;
+			} // fin des données
 			
-			//affichage du contenu de test
+			//affichage du contenu de dernier_article
 			// echo "<pre>";
-			// print_r($test);
+			// print_r($dernier_article);
 			// echo "</pre>";
 			
 			$query->closeCursor();
 			
-			if ($test != "") {
+			if ($dernier_article != "") {
 			
 				echo "<h1>";
-				echo $test['titre'];
+				echo $dernier_article['titre'];
 				echo "</h1>";
 				
-				echo $test['resume'];
-				echo "<img src='".$test['image']."'>";
+				echo $dernier_article['resume'];
+				// $dernier_article['image'] contient le chemin vers l'image dans le dossier data du site
+				echo "<img src='".$dernier_article['image']."'>";
 				
 				?>
 				<br><br>
-				<!-- href fait le lien entre le r�sum� de la page d'accueil et lire la suite -->
-				<a href="contenu.php?id=<?=$test['id']?>">Lire la suite</a>
+				<!-- href fait le lien entre le résumé de la page d'accueil et lire la suite. On passe en Get l'id du dernier article. -->
+				<a href="contenu.php?id=<?=$dernier_article['id']?>">Lire la suite</a>
 					
 				</article>
 				
@@ -67,19 +71,20 @@ require_once "menu.php";
 				/* Récupération du dernier commentaire de l'article. On traite le cas où deux utilisateurs différents ajoutent 
 				 * deux commentaires pour deux articles différents exactement en même temps. En effet, le dernier commentaire ajouté
 				 * ne correspond pas forcément à celui du dernier article.
+				 On fait une jointure entre les tables user et commentaire car on veut récupérer le nom de l'utilisateur.
 				 */
-				$data = "";
 				$query=$bdd->prepare('SELECT user.nom,commentaire.date,commentaire.contenu
 	                       FROM commentaire inner join user on user.id = commentaire.user_id
 	                       WHERE commentaire.date = (select max(date) from commentaire where article_id = ?) 
 							and commentaire.article_id = ?'
 									);
-				$query->execute(array($test['id'],$test['id']));
-				$data = $query->fetch();
+				$query->execute(array($dernier_article['id'],$dernier_article['id']));
+				$dernier_commentaire = $query->fetch();
+				$query->closeCursor();
 				
-				//print_r($test);
+				//print_r($dernier_article);
 				
-				if ($data != "") {
+				if ($dernier_commentaire) {
 				?>
 				<div class="comments">
 					<section class="comment_header">
@@ -87,9 +92,7 @@ require_once "menu.php";
 					</section>
 					<?php
 					// On envoie en paramètres de la fonction les données récupérées, c'est-à-dire les données du dernier commentaire du dernier article
-					if (is_array($data)) {
-						afficherCommentaire($data['nom'], $data['date'], $data['contenu']);
-					}
+					afficherCommentaire($dernier_commentaire['nom'], $dernier_commentaire['date'], $dernier_commentaire['contenu']);
 					?>
 				</div>
 				<?php

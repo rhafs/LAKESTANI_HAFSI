@@ -2,21 +2,25 @@
 require_once "bdd.php";
 require_once "menu.php";
 
-
+// Le lien de déconnection ramène vers le fichier login.php, il faut donc détruire la session et en recommencer une nouvelle, et détruire le cookie contenant l'id de l'utilisateur.
 if (isset($_SESSION['user_id'])) {
 	session_destroy();
 	session_start();
+	setcookie("user_id", "", -1);
 }
 
-if (isset($_POST) && count($_POST) > 0) {
+// Si le formulaire est envoyé
+if (isset($_POST)) {
 	
+	//Si le login est rempli et envoyé et pas vide, ou constitué uniquement d'espaces
 	if (isset($_POST['login']) && trim($_POST['login']) != "") {
 		
+		// Si le mot de passe est rempli et envoyé et pas vide, ou constitué uniquement d'espaces
 		if (isset($_POST['pass']) && trim($_POST['pass']) != "") {
 			
 			$bdd = Connect_db();
 			
-			$user = array();
+			$test = array();
 			
 			$query=$bdd->prepare('SELECT id,nom,type
                        			FROM user
@@ -32,7 +36,7 @@ if (isset($_POST) && count($_POST) > 0) {
 			
 			$query->closeCursor();
 			
-			//print_r($user);
+			//print_r($test);
 			
 			//connection ok
 			if (isset($test['nom'])) {
@@ -40,9 +44,12 @@ if (isset($_POST) && count($_POST) > 0) {
 				
 				//fixer les variables de session
 				$_SESSION['login'] = $_POST['login'];
-				$_SESSION['user_id'] = $user['id'];
-				$_SESSION['user_nom'] = $user['nom'];
-				$_SESSION['user_type'] = $user['type'];
+				$_SESSION['user_id'] = $test['id'];
+				$_SESSION['user_nom'] = $test['nom'];
+				$_SESSION['user_type'] = $test['type'];
+				
+				//Crée un cookie qui expire dans 30 jours et qui contient l'id de l'utilisateur
+				setcookie("user_id", $_SESSION['user_id'], time() + 30 * 24 * 3600);
 				
 			} else {
 				//connection ko
@@ -50,12 +57,13 @@ if (isset($_POST) && count($_POST) > 0) {
 			}
 			
 		} else {
+			// si seulement le mot de passe est manquant
 			$login = 4;
 		}
 	} else {
 		
 		if ((isset($_POST['pass']) && trim($_POST['pass']) == "")) {
-			//les deux
+			//si le login et le mot de passe sont manquants
 			$login = 5;
 		} else {
 			//login manquant
@@ -65,6 +73,7 @@ if (isset($_POST) && count($_POST) > 0) {
 	}
 	
 } else {
+	// Dans le cas de la déconnexion, il n'y a pas de variables passées en post
 	$login = 2;
 }
 
