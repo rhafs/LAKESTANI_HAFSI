@@ -1,5 +1,5 @@
-<?php 
-// Toutes les fonctions d'affichage sont dans menu.php, et les autres fonctions sont dans bdd.php
+﻿<?php 
+// Toutes les fonctions d'affichage sont dans menu.php, et les autres fonctions sont dans bdd.php. Ces deux fichiers sont systématiquement inclus dans chaque page.
 require_once "bdd.php";
 require_once "menu.php";
 
@@ -26,10 +26,10 @@ require_once "menu.php";
 			<?php 
 			$bdd = Connect_db();
 			
-			//récupération de l'article ajouté en dernier
+			//récupération de l'article ajouté ou modifié en dernier
 			$query=$bdd->prepare('SELECT id,titre,resume,image
                        FROM article
-                       WHERE date = (select max(date) from article)
+                       WHERE derniere_date = (select max(derniere_date) from article)
                        ');
 			$query->execute();
 			
@@ -56,9 +56,9 @@ require_once "menu.php";
 				echo $dernier_article['titre'];
 				echo "</h1>";
 				
-				echo $dernier_article['resume'];
+				echo nl2br ($dernier_article['resume']);
 				// $dernier_article['image'] contient le chemin vers l'image dans le dossier data du site
-				echo "<img src='".$dernier_article['image']."'>";
+				echo "<figure><img src='".$dernier_article['image']."'></figure>";
 				
 				?>
 				<br><br>

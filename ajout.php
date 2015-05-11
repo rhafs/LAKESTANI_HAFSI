@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once "bdd.php";
 require_once "menu.php";
 
@@ -20,6 +20,7 @@ require_once "menu.php";
 	<div class="content">
 	
 		<?php 
+		//Si un utilisateur est connecté en tant qu'administrateur
 		if (isset($_SESSION['user_type']) && $_SESSION['user_type']== 1 ) {
 		?>
 			<section class="left_side">
@@ -33,10 +34,11 @@ require_once "menu.php";
 			//On vérifiera si quelque chose a été passé en post et que ce ne soit pas vide
 			if (isset($_POST) && count($_POST) > 0) {
 				//recup info sur article à partir des valeurs passées en post
-				$titre = $_POST['titre'];
-				$resume = $_POST['resume'];
-				$contenu = $_POST['contenu'];
-				// On initialise $id à vide
+				$titre = htmlspecialchars($_POST['titre']);
+				$resume = htmlspecialchars($_POST['resume']);
+				$contenu = htmlspecialchars($_POST['contenu']);
+				/* Si on a cliqué sur modifier l'article et qu'on a soumis le formulaire, $id contiendra l'id de l'article.
+				En effet, quand on clique sur modifier, on passe en get l'id de l'article, et quand on soumet le formulaire, on passe en hidden et en post ce même id */
 				$id = $_POST['id'];
 			
 				$faireAjout = true;
@@ -102,7 +104,7 @@ require_once "menu.php";
 						$faireAjout = false;
 					}
 					
-				} else {
+				} else if($_FILES['image']['size'] > 2097152){
 					echo "Fichier trop grand ";
 					$faireAjout = false;
 				}
@@ -116,21 +118,20 @@ require_once "menu.php";
 					move_uploaded_file($_FILES['image']['tmp_name'], "data\\".$nom_fichier);
 					
 					// Si $_POST['id'] n'est pas vide c'est que le formulaire a été rempli et qu'on est dans la modification
-					
 					if ($_POST['id'] != "") {
 						// les valeurs passées en paramètres aux deux fonctions correspondent aux valeurs récupérées en post par le formulaire
 						//-------- MODIFICATION -------------------
 						majArticle($titre,$resume,$contenu,$nom_fichier,$_POST['id']);
 						$id_article = $_POST['id'];
-						$libelle = "ajouté";
+						$libelle = "modifié";
 					} else {
 					//-------- AJOUT -------------------
 						$id_article = addArticle($titre,$resume,$contenu,$nom_fichier);
-						$libelle = "modifié";
+						$libelle = "ajouté";
 					}
 						
 					echo "Votre article a bien été $libelle.";
-					echo "<a href='contenu.php?id=".$id_article."'>Lien vers article </a>";
+					echo "<a href='contenu.php?id=".$id_article."'>Lien vers l'article </a>";
 						
 				}
 			

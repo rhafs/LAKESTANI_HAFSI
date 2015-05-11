@@ -1,16 +1,18 @@
-<?php
+﻿<?php
 require_once "bdd.php";
 require_once "menu.php";
 
 // Le lien de déconnection ramène vers le fichier login.php, il faut donc détruire la session et en recommencer une nouvelle, et détruire le cookie contenant l'id de l'utilisateur.
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION["user_id"])) {
 	session_destroy();
 	session_start();
-	setcookie("user_id", "", -1);
+	setcookie("user_id", '', -1);
+	// On crée une variable superglobale qui va servir à afficher la barre latérale normalement. En effet, la valeur du cookie n'est effective qu'après un raffraichissement de la page.
+	$_SESSION["deconnection"]=true;
 }
 
 // Si le formulaire est envoyé
-if (isset($_POST)) {
+if (isset($_POST) && count($_POST)>0) {
 	
 	//Si le login est rempli et envoyé et pas vide, ou constitué uniquement d'espaces
 	if (isset($_POST['login']) && trim($_POST['login']) != "") {
@@ -20,7 +22,7 @@ if (isset($_POST)) {
 			
 			$bdd = Connect_db();
 			
-			$test = array();
+			$utilisateur = array();
 			
 			$query=$bdd->prepare('SELECT id,nom,type
                        			FROM user
@@ -28,31 +30,30 @@ if (isset($_POST)) {
                        ');
 			$query->execute(array($_POST['login'],$_POST['pass']));
 			
-			while($data = $query->fetch()) { // lecture par ligne
-				//crochets pour ajouter chaque ligne de data ds test
-				$test = $data;
-			
+			// Si l'utilisateur est enregistré et qu'il a tapé le bon mot de passe
+			if($data = $query->fetch()) {
+				$utilisateur = $data;
 			}
 			
 			$query->closeCursor();
 			
-			//print_r($test);
+			//print_r($utilisateur);
 			
 			//connection ok
-			if (isset($test['nom'])) {
+			if (isset($utilisateur['nom'])) {
 				$login = 0;
 				
 				//fixer les variables de session
 				$_SESSION['login'] = $_POST['login'];
-				$_SESSION['user_id'] = $test['id'];
-				$_SESSION['user_nom'] = $test['nom'];
-				$_SESSION['user_type'] = $test['type'];
+				$_SESSION["user_id"] = $utilisateur['id'];
+				$_SESSION['user_nom'] = $utilisateur['nom'];
+				$_SESSION['user_type'] = $utilisateur['type'];
 				
 				//Crée un cookie qui expire dans 30 jours et qui contient l'id de l'utilisateur
-				setcookie("user_id", $_SESSION['user_id'], time() + 30 * 24 * 3600);
+				setcookie("user_id", $_SESSION["user_id"], time() + 30 * 24 * 3600);
 				
 			} else {
-				//connection ko
+				//Si l'utilisateur n'est pas enregistré ou que le mot de passe est incorrect
 				$login = 1;
 			}
 			
@@ -69,7 +70,6 @@ if (isset($_POST)) {
 			//login manquant
 			$login = 3;
 		}
-		
 	}
 	
 } else {
@@ -106,7 +106,10 @@ if (isset($_POST)) {
 			<section class="left_side">
 				<?php 
 				if ($login == 1) {
-					echo "L'utilisateur n'existe pas dans la base.";
+					echo "L'utilisateur n'existe pas dans la base ou le mot de passe est incorrect.";
+				}
+				if ($login == 2) {
+					echo "Vous avez été déconnecté.";
 				}
 				if ($login == 3) {
 					echo "Le login est manquant.";

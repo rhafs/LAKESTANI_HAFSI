@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // menu.php contient toutes les fonctions d'affichage.
 function afficherMenu() {
 	?>
@@ -48,9 +48,9 @@ function afficherZone() {
 		<?php
 		
 		//On vérifie dans le cookie si l'utilisateur était déjà connecté, et on restaure les variables de session si c'est le cas
-		if (isset($_COOKIE['user_id']))
+		if (isset($_COOKIE["user_id"]) && $_SESSION["deconnection"]!=true)
 		{
-			$_SESSION['user_id'] = $_COOKIE['user_id'];
+			$_SESSION["user_id"] = $_COOKIE["user_id"];
 					
 			$userInfo = array();
 			
@@ -58,7 +58,7 @@ function afficherZone() {
 								FROM user
 								WHERE id = ? 
 					   ');
-			$query->execute(array($_SESSION['user_id']));
+			$query->execute(array($_SESSION["user_id"]));
 
 			//1 seul utilisateur avec cet ID donc une seule ligne à lire
 			if ($data = $query->fetch())
@@ -73,12 +73,12 @@ function afficherZone() {
 			$query->closeCursor();
 		}
 		
-		// Si un utilisateur est connecté, on affiche son nom, sa date d'inscription, le nombre d'articles écrits si c'est l'adminiustrateur, le nombre de commentaires écrits
-		if (isset($_SESSION['user_id'])) {
+		// Si un utilisateur est connecté, on affiche son nom, sa date d'inscription, le nombre d'articles écrits si c'est l'administrateur, le nombre de commentaires écrits
+		if (isset($_SESSION["user_id"])) {
 
 			//récuperation de la date d'inscription
 			$query=$bdd->prepare('SELECT date_inscription FROM user WHERE id = ?');
-			$query->execute(array($_SESSION['user_id']));
+			$query->execute(array($_SESSION["user_id"]));
 			$data = $query->fetch();
 			
 			$date_inscription = $data['date_inscription'];
@@ -88,33 +88,33 @@ function afficherZone() {
 			if ($_SESSION['user_type'] == 1)
 			{
 				$query=$bdd->prepare('SELECT count(*) as nb FROM article WHERE user_id = ?');
-				$query->execute(array($_SESSION['user_id']));
+				$query->execute(array($_SESSION["user_id"]));
 				$data = $query->fetch();
 				
 				$nb_articles = $data['nb'];
 				$query->closeCursor();
 			}
 			
-			//récuperation du nombre de commentaires écrits si on est connecté en tant qu'administrateur
+			//récuperation du nombre de commentaires écrits
 			$query=$bdd->prepare('SELECT count(*) as nb FROM commentaire WHERE user_id = ?');
-			$query->execute(array($_SESSION['user_id']));
+			$query->execute(array($_SESSION["user_id"]));
 			$data = $query->fetch();
 			
 			$nb_commentaires = $data['nb'];
 			
 			$query->closeCursor();
 			
-			echo "connecté en tant que : ".$_SESSION['user_nom']."<br>";
-			echo "inscrit le : ".$date_inscription."<br>";
+			echo "<p>connecté en tant que :</p>".$_SESSION['user_nom'];
+			echo "<p>inscrit le :</p>".$date_inscription;
 			
 			// Si on est connecté en tant qu'administrateur, on affiche le nombre d'articles écrits
 			if ($_SESSION['user_type'] == 1) {
-				echo "nb articles: ".$nb_articles."<br>";
+				echo "<p>nb articles :</p>".$nb_articles;
 			}
 			
-			echo "nb commentaires : ".$nb_commentaires."<br>";
+			echo "<p>nb commentaires :</p>".$nb_commentaires;
 			
-			echo "<a href='login.php'>Déconnecter</a>";
+			echo "<p><a href='login.php'>Déconnecter</a></p>";
 		
 		} else {
 			//Affichage de la zone de connection si aucun utilisateur n'est connecté

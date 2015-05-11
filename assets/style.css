@@ -120,6 +120,9 @@ aside h2 {
 	padding-right : 5%;
 }
 
+aside p {
+	font-weight: bold;
+}
 footer {
 	margin-top:0%;
 }
