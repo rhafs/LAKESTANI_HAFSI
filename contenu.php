@@ -6,7 +6,7 @@ require_once "menu.php";
 if (isset($_POST) && count($_POST) > 0) {
 	
 	// $_POST['comm'] contient le champ correspondant au textarea du formulaire d'ajout de commentaire plus bas
-	$comm = $_POST['comm'];
+	$comm = utf8_encode(htmlspecialchars($_POST['comm']));
 	
 	/* La fonction trim permet d'enlever tous les espaces, ça permet d'éviter d'afficher les commentaires formés seulement d'espaces.
 	On vérifie qu'un utilisateur est connecté, il est impossible d'ajouter un commentaire sans être connecté.*/
@@ -108,7 +108,7 @@ if (isset($_POST) && count($_POST) > 0) {
 						<div class="comment_add">
 							<p>LAISSER UN COMMENTAIRE</p>
 							<!-- Il faut garder en GET l'id de l'article qui avait déjà passé en get grâce au href dans index.php ou recherche.php-->
-							<form action="contenu.php?id=<?=$_GET['id']?>" method='post' class="formulary">
+							<form action="contenu.php?id=<?php echo $_GET['id']?>" method='post' class="formulary">
 								<label>
 								<textarea placeholder="tapez votre commentaire" name="comm"></textarea></label>
 								<button>Laisser un commentaire</button>

@@ -2,6 +2,8 @@
 // Toutes les fonctions d'affichage sont dans menu.php, et les autres fonctions sont dans bdd.php. Ces deux fichiers sont systématiquement inclus dans chaque page.
 require_once "bdd.php";
 require_once "menu.php";
+// On fixe la variable de session deconnection à false dès qu'on rentre dans index.php car cette variable sert pour l'affichage de la barre latérale.
+$_SESSION["deconnection"]=false;
 
 ?>
 
@@ -63,7 +65,7 @@ require_once "menu.php";
 				?>
 				<br><br>
 				<!-- href fait le lien entre le résumé de la page d'accueil et lire la suite. On passe en Get l'id du dernier article. -->
-				<a href="contenu.php?id=<?=$dernier_article['id']?>">Lire la suite</a>
+				<a href="contenu.php?id=<?php echo$dernier_article['id']?>">Lire la suite</a>
 					
 				</article>
 				

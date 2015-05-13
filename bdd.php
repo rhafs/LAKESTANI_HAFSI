@@ -72,8 +72,8 @@ function addCommentaire($id_article,$comm) {
 	$bdd = Connect_db();
 
 	$query=$bdd->prepare('insert into commentaire(user_id,article_id,contenu) values (?,?,?)');
-	//On a fixé la variable $_SESSION['user_id'] dans le fichier login.php. La fonction addslashes permet d'échapper les simples quotes.
-	$query->execute(array($_SESSION['user_id'],$id_article,addslashes($comm)));
+	//On a fixé la variable $_SESSION['user_id'] dans le fichier login.php.
+	$query->execute(array($_SESSION['user_id'],$id_article,$comm));
 
 	$query->closeCursor();
 }

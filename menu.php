@@ -143,8 +143,8 @@ function afficherCommentaire($nom,$date,$contenu) {
 ?>
 	<div class="comment_content">
 		<!-- La fonction convertDate permet de convertir une date du format sql au format français -->
-		<p><?=$nom?></p> <p><?=convertDate($date)?></p>
-		<p><?=$contenu?></p>
+		<p><?php echo utf8_decode($nom)?></p> <p><?php echo convertDate($date)?></p>
+		<p><?php echo utf8_decode($contenu)?></p>
 	</div>
 <?php 
 

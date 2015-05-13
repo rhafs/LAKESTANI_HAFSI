@@ -28,7 +28,8 @@ if (isset($_POST) && count($_POST)>0) {
                        			FROM user
                        			WHERE login = ? and password = ?
                        ');
-			$query->execute(array($_POST['login'],$_POST['pass']));
+			// On a utilisé la fonction md5 dans la base de données pour crypter le mot de passe, il faut donc le décrypter
+			$query->execute(array($_POST['login'],md5($_POST['pass'])));
 			
 			// Si l'utilisateur est enregistré et qu'il a tapé le bon mot de passe
 			if($data = $query->fetch()) {
@@ -94,7 +95,7 @@ if (isset($_POST) && count($_POST)>0) {
 	?>
 	<div class="content">
 		<?php 
-		if ($login == 0 || isset($_SESSION['login'])) {
+		if (isset($_SESSION['login'])) {
 
 			echo "<section class='left_side'>" ;
 			echo "Bienvenue ".$_SESSION['user_nom']."!";
